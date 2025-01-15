@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Button, FlatList, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Button, FlatList, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, Vibration, View } from "react-native"
 import DatePicker from "react-native-date-picker"
 import { Formik, FormikErrors, FormikValues } from "formik"
 import { FondoHoja } from "../components/layout/FondoHoja"
@@ -269,7 +269,7 @@ export const CuadernoScreen = ({ route }: Props) => {
         data={transaccionesByClient()}
         keyExtractor={(item) => (item.id ? item.id.toString() : 'undefined')}
         renderItem={({ item }) =>
-          <Pressable onLongPress={() => { setTransaccionId(item.id || 0), setModalVisible3(true) }}>
+          <Pressable onLongPress={() => { setTransaccionId(item.id || 0), setModalVisible3(true), Vibration.vibrate(200) }}>
             <View style={styles.itemBox}>
               <Text style={styles.listText}>{formatFecha(item.fecha)}</Text>
               <Text>{item.descripcion}</Text>

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Button, FlatList, Modal, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Button, FlatList, Modal, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, Vibration, View } from "react-native"
 import { databaseContext } from "../context/DatabaseProvider"
 import { FondoHoja } from "../components/layout/FondoHoja"
 import { MyModalMessage } from "../components/modals/MyModalMessage"
@@ -162,7 +162,7 @@ export const HomeScreen = () => {
                 <View style={styles.itemBox}>
                     <Pressable
                       onPress={() => navigation.navigate('CuadernoScreen', { id: item.id && item.id.toString() || 0, name: item.name && item.name || "" })}
-                      onLongPress={() => { (item.name && setNameUpdate(item.name), item.id && setItemUpdate(item.id), setModalVisible2(true)) }}>
+                      onLongPress={() => { (item.name && setNameUpdate(item.name), item.id && setItemUpdate(item.id), setModalVisible2(true)), Vibration.vibrate(200) }}>
                       <View style={{flexDirection:"row", justifyContent:"space-between"}}>
                         <Text style={styles.textLista}>{item.name}</Text>
                         <Text style={[styles.textLista, {color: balance(item.id) < 0  ? "red" : balance(item.id)>0 ? "green":"black"}]}>{balance(item.id)?.toLocaleString("en-US")}</Text>

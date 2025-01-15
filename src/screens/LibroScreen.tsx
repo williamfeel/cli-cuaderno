@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Button, FlatList, Pressable, StyleSheet, Text, View } from "react-native"
+import { Button, FlatList, Pressable, StyleSheet, Text, Vibration, View } from "react-native"
 import { FondoHoja } from "../components/layout/FondoHoja"
 import { DateTime } from 'luxon';
 import { databaseContext } from "../context/DatabaseProvider"
@@ -80,7 +80,7 @@ export const LibroScreen = () => {
         data={transaccionesByClient()}
         keyExtractor={(item) => (item.id ? item.id.toString() : 'undefined')}
         renderItem={({ item }) =>
-          <Pressable onLongPress={() => { setTransaccionId(item.id || 0), setModalVisible3(true) }}>
+          <Pressable onLongPress={() => { setTransaccionId(item.id || 0), setModalVisible3(true), Vibration.vibrate(200) }}>
             <View style={styles.itemBox}>
               <Text style={styles.listText}>{formatFecha(item.fecha)}</Text>
               <Text style={{ fontWeight: "bold" }}>{nombreCliente(item.client_id)}</Text>

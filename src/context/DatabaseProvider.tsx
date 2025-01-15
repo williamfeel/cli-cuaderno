@@ -95,8 +95,8 @@ export const DatabaseProvider = ({ children }: PropsWithChildren) => {
   const updateClient = async (id: number, name: string) => {
     try {
       await db?.executeAsync('UPDATE clients SET name = ? WHERE id = ?', [name, id])
-      getClients()
       console.log('Cliente actualizado')
+      getClients()
     } catch (error) {
       console.log('Error al actualizar cliente', error)
     }
@@ -105,8 +105,8 @@ export const DatabaseProvider = ({ children }: PropsWithChildren) => {
   const insertClient = async (name: string) => {
     try {
       await db?.executeAsync('INSERT INTO clients (name) VALUES (?)', [name])
-      getClients()
       console.log('Cliente insertado')
+      getClients()
     } catch (error) {
       console.log('Error al insertar cliente', error)
     }

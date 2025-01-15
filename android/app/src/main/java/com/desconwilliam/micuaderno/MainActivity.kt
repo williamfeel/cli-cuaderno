@@ -1,4 +1,4 @@
-package com.cuaderno
+package com.desconwilliam.micuaderno
 import android.os.Bundle
 
 import com.facebook.react.ReactActivity
